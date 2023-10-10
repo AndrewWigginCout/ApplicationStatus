@@ -1,0 +1,134 @@
+Selenium Project Notes 	- 	(Overall Project Idea) - This project is an ApplicationStatus project. This project will monitor an application and email the user if it's
+		         		  	still running or not. The user can also reply to the email stating if they want to open it or not. If they do,
+			 			  	the program will open it for them and email them a screenshot of it! If not, the program will end. If the program
+			 			  	has an error (example: The selenium execution got corrupted somehow) the user will get notified via email and
+			 			  	the user can restart the program from there or leave it alone.
+						
+						- 	("Selenium" File) - Selenium elements function. This file will only contain the Selenium Initialization information
+							This file includes things like the import for selenium + selenium webdriver information. This file also includes
+							all of the functions needed for each elements (ID, Name, XPATH, Link_Text, Partial_Link_Text, Tag_Name, Class_Name,
+							and CSS_Selector).
+
+						-	("Main_Project" File) - This file is the main piece of the project. Mostly ALL of the code is in this file. This file
+							may look overwhelming when you first open it, but like I said, do not edit if you do not understand it. This includes all
+							the user_information imports, A few non-selenium related imports, app_running + App_not_running functions, Application monitor,
+							information, and much more. PLEASE READ CAREFULLY, editing even ONE character can cause the program to malfunction.
+
+
+
+
+
+
+
+USER INFORMATION SECTION (Kept this separate from the original notes as this is VERY important information for the user)
+						-	("User_Informaiton" File) - This file I added just for the users to input information without looking through all The
+							code and possibly getting confused. This file contains the variables needed for credentials, sending email information,
+							and verification. Credentials section is used to login to the gmail account(Which I recommend making a new one for). The
+							Sending Email information is for who do we want to send the email to, what's the subject, and what's the message body. The
+							verification section is just to verify that it's YOU sending the email and not someone else. If it is someone else, the
+							program WILL NOT run. The information below consists of each section but more organized. Look for the title here, 
+							then look for the title inside of the User_Informaiton file and edit accordingly.
+
+							Application Status Section:
+								This section is the application section. What application do you want to monitor? To figure this out,
+    							press CTRL + Shift + ESC to open the Task Manager. From there, go into the "details" section and pick and app 
+							make sure the app name is EXACTLY typed as you see in Task Manager (Please Include the extension) 
+							you'll need to go into the file path, copy the file name + extension, and add it into the quotes. (Refer to video
+							if you're confused). 
+
+							
+							Credentials Section:
+								This section is the credentials. You'll most likely need to make a new account for this for Google's security purpose.
+    							The Email and Password is for the automation to send the email. 
+
+							Sending Email Section: 
+								This section will consist of who to send the email to, what the subjects for both scenerios will be, and the same for 
+								the message body. The program will still look for a reply consisting of "Yes" or "No".
+
+							 Verification Section:
+							 	This section is for verification purposes! The 'username' variable is what the program looks for when you reply back. 
+								While using the email you will be using to reply with, send your automation an email and see what the username says. 
+								That's where you'll input the username (Pictures for help will be inside of folder!)
+    
+    								The password_veri is another verification, just to make sure it's YOU sending the message! The password can be anything. 
+								Selenium will search for the text containing the password inside of the message body (Make sure the message body is JUST the password) 
+
+							Path_to_App:
+								This section is a bit more complicated. Press WIN + E and it will open up the explorer. You will need to go into the file location
+								with the file to open. There will be a video in the folder! Also, I will now show the location to open up the Selenium notes
+								inside of the foler. "P:\\Coding Projects\\Python\\ApplicationStatus" <- I would add that into those quotes. The regular
+								location file only has one "\" but Python uses the "\" for other purposes. So, to not confuse Python, we need to add "\\" for each
+								single back slash
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Notes for me:
+1- Program checks if the app is running or not. If so - Even numbers, if not - odd numbers
+
+								// App Running \\ 
+2 - App_Running function runs and tells the user it's running. Programs asks the user for a screenshot
+			if user says yes, screenshot function will run. If no, the program will still continue to monitor the app
+			If app running messes up(For any reason) Error email runs
+
+4 - Waiting for Reply (This will occur for either App running or not)
+			This function waits for the reply (5 minutes), then checks the 
+			username of the reply. If it's right, clicks the email. If not,
+			it goes into the error email.
+
+6 - When it succeeds, it then goes into the User_Reply funtion.
+	 		This function reads the text of the user, then I wrote if statements
+	 		that will occur with what the user says. This function will also be for
+	 		app_running or not.
+
+	- If user wrote "yes {Password}" then the Yes_Email_Screenshot function runs.
+			This function takes a screenshot of the computer screen, then emails the 
+			image to the user. This funciton also notifies the user that this program 
+			will still continue to monitor the application!
+	- If the user wrote "no {Password}" then the No_Email_Screenshot function runs.
+			This function sends an email saying No screenshot will send, and that the application
+			will still continue to monitor
+	- There's an Else statement, that will notify the user of any error WITHIN the application. If the
+	  		element still is found, no exception occurs. If the user forgot to enter the password, entered the 
+	  		wrong password, or put the wrong format in. The Reaffirmation Function runs. This function emails 
+			the user saying something was wrong with the text, and to make sure it's formatted correctly with the
+			right password. This function also restarts the application
+	- The exception error occurs if ANY EXCEPTION happens. It then notifies the user of the error and restarts the 
+	  		program automatically.
+
+
+
+								// App NOT Running \\									
+3 -	App_Not_running function runs. This function emails the user saying the application is not running
+			and if they want to open it back up or not. If not - the application will then stop running.
+			If yes, the program opens the application
+
+5 - The next fucntion that runs is the waiting for reply function. This function does the same thing, checks
+			the reply to see if the username matches with what the user inputted.
+
+7 - The next function that runs is the user reply. This function reads the reply of the user, then does what's needed
+			(Same thing with app running. Although, I need a different indicator for appNotrunning).
+
+9 - If the user replies with "Yes", then an email will come back stating that the application is now running.
+			If "No" the application will end
+
+11 - When it opens, the program sends an email asking if they want a screenshot. This will go back to the Yes_Screenshot function
+			and that will do what it needs to do!
+
+
