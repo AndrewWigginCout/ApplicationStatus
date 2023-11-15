@@ -1,0 +1,5 @@
+PyAutoGUI==0.9.54
+PyGetWindow==0.0.9
+Pymem==1.13.0
+pywin32==306
+selenium==4.15.2
