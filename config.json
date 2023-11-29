@@ -1,0 +1,18 @@
+{
+  "application_monitor": "",
+  "email": "",
+  "file_name": "",
+  "message_body_ifappNOTrunning": "Application Status: Not Working.. Do you want to run the app? If yes, reply back with 'start app w/ password' The reply should look like this, Start app password'.                                                                 If not, reply back with 'Keep app closed password'(The program will come to an end). To stop program, type in Stop program password",
+  "message_body_ifapprunning": "Application Status: Working! Do you want to send a screenshot? Reply back with yes or no with the password you assigned. The reply should look like this, yes password. To stop program, type in Stop program password",
+  "name_of_screenshot": "",
+  "password": "",
+  "password_veri": "",
+  "path_to_app": "",
+  "path_to_screenshot": "",
+  "subject_ifappNOTrunning": "Application Status: Not Working..",
+  "subject_ifapprunning": "Application Status: Working!",
+  "taskbar_name": "",
+  "to": "",
+  "user_time": 30,
+  "username": ""
+}

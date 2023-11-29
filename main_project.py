@@ -12,22 +12,35 @@ import pygetwindow as gw
 import win32clipboard
  
 #User information. These are all things the user needs to edit. Just open the file and edit!!
-from user_information import username
-from user_information import email #This import is to import a file, and withing that file importing a variable called "email"
-from user_information import password #This import is to import a file, and withing that file importing a variable called "password"
-from user_information import to #This import is to import a file, and within that file - import the To section in Gmail
-from user_information import subject_ifapprunning #This import is what Selenium will type in for Subject (If the app is running)
-from user_information import subject_ifappNOTrunning #This import is what Selenium will type in for Subject (If the app is NOT running)
-from user_information import message_body_ifapprunning #This import is what Selenium will type in for Message Body (If the app is running)
-from user_information import message_body_ifappNOTrunning #This import is what Selenium will type in for Message Body (If the app is running)
-from user_information import password_veri #Password Verification!
-from user_information import application_monitor #Application to monitor
-from user_information import path_to_app #This variable is the application location!
-from user_information import path_to_screenshot #This import is where the screenshots go!
-from user_information import file_name #This import is for the file name
-from user_information import user_time #This import is to see how long between email checks!
-from user_information import name_of_screenshot
-from user_information import taskbar_name
+# Importing data from a json file is as simple as loading the file and passing it to the json.load parser
+# Using import statements should be reserved for loading code, there are better mechanisms for saving and loading data
+# This is better because you compartmentalize concerns, you have one file for functions, and another for data
+import json
+with open("config.json", "r") as fh:
+    g = json.load(fh)
+# Ideally you should just refactor your code to use the g dictionary whenever these data need to be recalled.
+# I put these lines here just to make the changes not break.
+# Which is silly, right? Nothing works without the data anyway...
+# But I wanted the program to have the same (non) functionality.
+
+# Also, I am opposed to this because it pollutes the global namespace. Too many global variables.
+# Well, at least, it should be organized better.
+username = g["username"]
+email = g["email"]
+password = g["password"]
+to = g["to"]
+subject_ifapprunning = g["subject_ifapprunning"]
+subject_ifappNOTrunning = g["subject_ifappNOTrunning"]
+message_body_ifapprunning = g["message_body_ifapprunning"]
+message_body_ifappNOTrunning = g["message_body_ifappNOTrunning"]
+password_veri = g["password_veri"]
+application_monitor = g["application_monitor"]
+path_to_app = g["path_to_app"]
+path_to_screenshot = g["path_to_screenshot"]
+file_name = g["file_name"]
+user_time = g["user_time"]
+name_of_screenshot = g["name_of_screenshot"]
+taskbar_name = g["taskbar_name"]
 
 def initialization():
     """ This function is the initialization of Selenium. This can also open up another browser if need be. """

@@ -47,3 +47,12 @@ path_to_screenshot = "" #This is the location of it
 
 #User_Inputted time
 user_time = 30 #This is the time variable in seconds. This lets the program know how long between emails to send another one. (calculated in seconds. 3600 seconds = hour) (This has no quotes since it's an integar!)
+
+g={}
+for variable in dir():
+  if not variable.startswith('__') and variable!='g': 
+    g[variable]=eval(variable)
+print(g)
+import json
+with open('config.json','w') as fh:
+  fh.write(json.dumps(g,indent=2))
